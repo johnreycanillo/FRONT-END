@@ -1,0 +1,28 @@
+<h1>Role</h1>
+<p>All role from secure (admin only) api end point:</p>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Role</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width:30%">Role</th>
+            <th style="width:10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let role of accounts">
+            <td>{{account.role}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{role.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button (click)="deleteRole(role.id)" class="btn btn-sm btn-danger btn-delete-role" [disabled]="role.isDeleting">
+                    <span *ngIf="role.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!role.isDeleting">Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!roles">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
